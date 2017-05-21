@@ -23,9 +23,9 @@ import jenes.tutorials.utils.Utils;
  */
 public class GeneticAlgorithmPlan {
 
-    private static int POPULATION_SIZE = 100;
-    private static int CHROMOSOME_LENGTH = 24;
-    private static int GENERATION_LIMIT = 1000;
+    private static int POPULATION_SIZE = 100; //100 tareas iniciales de entre las cuales elegir la siguiente
+    private static int CHROMOSOME_LENGTH = 10;
+    private static int GENERATION_LIMIT = 1; //Debe ser una, sino hay mutación y se pierde la escencia del ejercicio teórico
     
     public static void main(String[] args) throws Exception {
         
@@ -39,12 +39,14 @@ public class GeneticAlgorithmPlan {
 
             @Override
             public void evaluate(Individual<BitwiseChromosome> individual) {
-                BitwiseChromosome chrom = individual.getChromosome();
-                int count = 0;
-                int length=chrom.length();
+                BitwiseChromosome crom = individual.getChromosome();
+                int score = 0;
+                
+                //Tengo que parsear el cromosoma y obtener los datos del proceso
+                //para luego calificar según las condiciones del TP
                 
                 
-                individual.setScore(count);
+                individual.setScore(score);
             }
             
         };
@@ -71,7 +73,7 @@ public class GeneticAlgorithmPlan {
         Individual solution = legals.get(0);
                 
         System.out.println("Solution: ");
-        System.out.println( solution );
+        System.out.println( solution.getChromosome() );
         System.out.format("found in %d ms.\n", algostats.getExecutionTime() );
         System.out.println();
         
